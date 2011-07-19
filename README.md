@@ -10,7 +10,7 @@ By default it uses ERB for templates. You can change that, however make sure to 
 - `index.html` is removed, instead Sinatra uses template.erb with `<%= yield %>` added for content 
 
 - This is not (yet) designed to co-operate with MBP's build script, so `<script src="js/script.js"></script>` is added.
-  `script.js` is generated from `script.coffee automatically`
+  `script.js` is generated from `script.coffee` automatically.
 
 - demos, build etc. has been removed
 
