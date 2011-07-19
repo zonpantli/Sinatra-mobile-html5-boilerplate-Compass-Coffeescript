@@ -1,0 +1,78 @@
+!!! 5
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!-- Appcache Facts http://appcachefacts.info/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7" manifest="default.appcache?v=1"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" manifest="default.appcache?v=1"> <!--<![endif]-->
+%head
+  %meta{:charset => "utf-8"}
+  %title
+  %meta{:content => "", :name => "description"}
+  %meta{:content => "", :name => "author"}
+  
+  / Mobile viewport optimization http://goo.gl/b9SaQ
+  %meta{:content => "True", :name => "HandheldFriendly"}
+  %meta{:content => "320", :name => "MobileOptimized"}
+  %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+  
+  / Home screen icon  Mathias Bynens http://goo.gl/6nVq0
+  / For iPhone 4 with high-resolution Retina display:
+  %link{:href => "img/h/apple-touch-icon.png", :rel => "apple-touch-icon-precomposed", :sizes => "114x114"}
+  / For first-generation iPad:
+  %link{:href => "img/m/apple-touch-icon.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}
+  / For non-Retina iPhone, iPod Touch, and Android 2.1+ devices:
+  %link{:href => "img/l/apple-touch-icon-precomposed.png", :rel => "apple-touch-icon-precomposed"}
+  / For nokia devices:
+  %link{:href => "img/l/apple-touch-icon.png", :rel => "shortcut icon"}
+  
+  / iOS web app, deletable if not needed
+  / the script prevents links from opening in mobile safari. https://gist.github.com/1042026
+  / %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}/
+  / %meta{:content => "black", :name => "apple-mobile-web-app-status-bar-style"}/
+  / :javascript
+  /   (function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")    %link{:href => "img/l/splash.png", :rel => "apple-touch-startup-image"}/
+  
+  / Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading
+  %meta{:content => "on", "http-equiv" => "cleartype"}
+
+  / more tags for your 'head' to consider https://gist.github.com/849231
+  / Main Stylesheet
+  %link{:href => "css/style.css?v=1", :rel => "stylesheet"}
+
+  / All JavaScript at the bottom, except for Modernizr which enables HTML5 elements &amp; feature detects
+  %script{:src => "js/libs/modernizr-custom.js"}
+
+  / Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill
+  :javascript
+    Modernizr.mq('(min-width:0)') || document.write('<script src="js/libs/respond.min.js">\x3C/script>')  %body
+
+  #container
+    %header
+    #main{:role => "main"}
+      = yield
+
+    %footer
+    
+  / JavaScript at the bottom for fast page loading
+  / Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary
+  %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"}
+  :javascript
+    window.jQuery || document.write('<script src="js/libs/jquery-1.5.2.min.js">\x3C/script>')
+  
+  / scripts concatenated and minified via ant build script
+  %script{:src => "js/mylibs/helper.js"}
+  / end concatenated and minified scripts
+  / since we don't run the build script, require script.js generated from script.coffee
+  %script{:src => "js/script.js"}
+  :javascript
+    // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+    MBP.scaleFix();
+  / Debugger - remove for production
+  / %script{:src => "https://getfirebug.com/firebug-lite.js"}
+  / mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID
+  :javascript
+    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    s.parentNode.insertBefore(g,s)}(document,"script"));
+:plain
+  </html>
