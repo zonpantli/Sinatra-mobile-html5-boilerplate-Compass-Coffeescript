@@ -1,3 +1,5 @@
+Gemfile.lock
+
 # Numerous always-ignore extensions
 *.diff
 *.err
