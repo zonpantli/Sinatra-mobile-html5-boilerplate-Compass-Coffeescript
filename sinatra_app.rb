@@ -2,6 +2,9 @@ require 'sinatra/base'
 require 'erb'
 require 'coffee-script'
 
+# uncomment if using haml
+# require 'haml'
+
 class SinatraApp < Sinatra::Base
   
   set :root, File.dirname(__FILE__)
@@ -13,6 +16,7 @@ class SinatraApp < Sinatra::Base
   
   #Starting actual application
   get '/' do
+    # haml :index
     erb :index
   end
 
