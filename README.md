@@ -43,8 +43,8 @@ I'd advise you to install Coffee as a NPM module, as it gives you a bit more fle
 
 # DEPLOY
 
-As a default, the Gemfile contains a group that you should uncomment if you want to deploy on Heroku. Deployment is standard, [here's the guide to do that][http://devcenter.heroku.com/articles/rack#frameworks]. You should be able to avoid configuration and just need to push the repo.
-I haven't tested it on other environments, but it should work fine. If you experience some weird behaviours related to SASS or Coffeescript, your best shot is to compile them on your machine and deploy them as static files in the public directory. Doing this makes the project a completely stock Sinatra app, so that should be easy to debug.
+As a default, the Gemfile contains a group that you should uncomment if you want to deploy on Heroku. 
+Deployment is standard, [here's the guide to do that][8]. You should be able to avoid configuration and just need to push the repo.
 
 # THANKS AND LINKS
 
@@ -60,3 +60,4 @@ a bit to my taste.
 [5]: http://jashkenas.github.com/coffee-script/#installation
 [6]: https://github.com/cloud8421/Sinatra-HTML5-boilerplate-with-ERB--Sass-and-CoffeeScript
 [7]: https://github.com/jondot/sinatra-html5boilerplate-erb-compass
+[8]: http://devcenter.heroku.com/articles/rack#frameworks
